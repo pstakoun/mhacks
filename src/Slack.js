@@ -19,6 +19,7 @@ class Slack extends Component {
       <div>
         <h2>Slack</h2>
         <a href="https://slack.com/oauth/authorize?scope=identity.basic&client_id=68763704759.245695352610"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+<<<<<<< HEAD
         app.get("/auth/slack", (req, res) => {
         	var options = {
         			uri: 'https://slack.com/api/oauth.access?code='
@@ -39,6 +40,8 @@ class Slack extends Component {
         			}
         	});
         });}
+=======
+>>>>>>> parent of 562f347... Fix
       </div>
     );
   }
