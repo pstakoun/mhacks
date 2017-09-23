@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
+import Next from './Next';
 import Calendar from './Calendar';
 import Gmail from './Gmail';
 import Trello from './Trello';
 import Slack from './Slack';
-import Next from './Next';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="card card-wide">
+          <Next />
+        </div>
         <div className="App-header">
           <h1>MHacks</h1>
         </div>
@@ -24,9 +27,6 @@ class App extends Component {
         </div>
         <div className="card">
           <Slack />
-        </div>
-        <div className="card card-wide">
-          <Next />
         </div>
       </div>
     );
