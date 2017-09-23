@@ -5,6 +5,7 @@ class Gmail extends Component {
     return (
       <div>
         <h2>Gmail</h2>
+				<pre id="gmail-content"></pre>
       </div>
     );
   }
