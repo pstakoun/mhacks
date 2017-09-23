@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Gmail extends Component {
+class Next extends Component {
   render() {
     return (
       <div>
-        <h2>Gmail</h2>
+        <h2>Up Next</h2>
       </div>
     );
   }
 }
 
-export default Gmail;
+export default Next;

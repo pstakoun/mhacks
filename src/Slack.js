@@ -1,5 +1,6 @@
 /*eslint-env jquery*/
 import React, { Component } from 'react';
+
 class Slack extends Component {
   constructor(props) {
     super(props);
@@ -21,9 +22,12 @@ class Slack extends Component {
           that.setState({ message: data.messages[0].text });
         }
       );
-      return (
+    return (
+      <div>
+        <h2>Slack</h2>
         <p>{this.state.message || "Loading..."}</p>
-      );
+      </div>
+    );
   }
 }
 

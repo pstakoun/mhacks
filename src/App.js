@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Calendar from './Calendar';
+import Gmail from './Gmail';
 import Trello from './Trello';
 import Slack from './Slack';
+import Next from './Next';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h1>MHacks</h1>
         </div>
-        <Trello />
-        <Slack />
+        <div className="card">
+          <Calendar />
+        </div>
+        <div className="card">
+          <Gmail />
+        </div>
+        <div className="card">
+          <Trello />
+        </div>
+        <div className="card">
+          <Slack />
+        </div>
+        <div className="card card-wide">
+          <Next />
+        </div>
       </div>
     );
   }
