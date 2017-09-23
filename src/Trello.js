@@ -6,38 +6,37 @@ class Trello extends Component {
     const opts = {
       name: "MHacks",
       success: function() {
-        // fetch board and get ID
-        var data = JSON.stringify(false);
-        var xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
-        xhr.addEventListener("readystatechange", function () {
-          if (this.readyState === this.DONE) {
-            console.log(this.responseText);
-          }
-        });
-        xhr.open("GET", "https://api.trello.com/1/members/id/boards");
-        xhr.send(data);
-        console.log(data);
-        var b = prompt("What board");
-        //filter out completed tasks
-        window.Trello.get("boards/"+b+"/cards/open", function(cards) {
-          //sort by due date
+        // Get member info
+        window.Trello.get("members/me/boards", function(boards) {
+          console.log(boards);
+          // Get boards
           var due_cards = [];
-          for (var i = 0; i < cards.length; i++) {
-            if (cards[i].due!=null) {
-              due_cards.push(cards[i]);
-            }
+          var count = 0;
+          for (var i = 0; i < boards.length; i++) {
+            // Filter out completed tasks
+            window.Trello.get("boards/"+boards[i].id+"/cards/open", function(cards) {
+              // Sort by due date
+              for (var i = 0; i < cards.length; i++) {
+                if (cards[i].due != null) {
+                  due_cards.push(cards[i]);
+                }
+              }
+              count++;
+              if (count == boards.length) {
+                due_cards.sort(function(a, b) {
+                  // Sort by date ascending
+                  var dateA = new Date(a.due), dateB = new Date(b.due);
+                  return dateA-dateB;
+                });
+                console.log(due_cards);
+                alert(due_cards[0].due);
+              }
+            });
           }
-          due_cards.sort(function(a, b) {
-            var dateA = new Date(a.due), dateB = new Date(b.due)
-            return dateA-dateB //sort by date ascending
-          });
-          console.log(due_cards);
-          alert(due_cards[0].due);
         });
       },
       error: function() {
-        // alert user
+        // Alert user
       }
     };
     window.Trello.authorize(opts);
