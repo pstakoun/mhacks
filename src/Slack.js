@@ -1,8 +1,9 @@
 /*eslint-env jquery*/
 import React, { Component } from 'react';
 class Slack extends Component {
-  render(){
+  constructor(props) {
     super(props);
+    this.state = {
       message: null
     };
   }
