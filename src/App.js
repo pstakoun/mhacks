@@ -10,11 +10,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="card card-wide">
-          <Next />
-        </div>
         <div className="App-header">
           <h1>MHacks</h1>
+        </div>
+        <div className="card card-wide">
+          <Next />
         </div>
         <div className="card">
           <Calendar />
