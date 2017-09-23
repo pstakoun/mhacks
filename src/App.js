@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Trello from './Trello';
 import Slack from './Slack';
@@ -9,11 +8,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h1>MHacks</h1>
         </div>
-        <Trello />
-        <Slack />
+        <div className="card">
+          <Trello />
+        </div>
+        <div className="card">
+          <Slack />
+        </div>
       </div>
     );
   }
