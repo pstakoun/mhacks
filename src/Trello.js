@@ -6,9 +6,11 @@ class Trello extends Component {
     const opts = {
       name: "MHacks",
       success: function() {
-        // fetch
-        window.Trello.get("boards/0OsfbJ6A/cards", function(cards) {
-          alert("aljflksjbghogbhsg");
+        // fetch board
+        //filter out completed tasks
+        window.Trello.get("boards/0OsfbJ6A/cards/open", function(cards) {
+          console.log(cards);
+          //sort by due date
         });
       },
       error: function() {
