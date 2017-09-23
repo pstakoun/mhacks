@@ -14,7 +14,6 @@ app.get("/auth/slack", (req, res) => {
 					'&redirect_uri=https://mhacksx.herokuapp.com',
 			method: 'GET'
 	};
-  alert("it works")
 	request(options, (error, response, body) => {
 			var JSONresponse = JSON.parse(body)
 			if (!JSONresponse.ok){
