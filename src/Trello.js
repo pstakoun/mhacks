@@ -22,7 +22,7 @@ class Trello extends Component {
     //TODO Fetch data from Trello API
     return (
       <div>
-        TODO return Trello data to client
+        <h2>Trello</h2>
       </div>
     );
   }
