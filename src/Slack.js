@@ -2,20 +2,27 @@
 import React, { Component } from 'react';
 class Slack extends Component {
   render(){
+    super(props);
+      message: null
+    };
+  }
+
+  render() {
     //choose user&generate keys
     //take most recent message
     //check if message has "to" in it
     //if it doesn't, return the message
     //otherwise, it's not an imperative and therefore not a command
+    var that = this;
     $.get(
-        "https://slack.com/api/conversations.history?token=xoxp-68763704759-68880662663-245174514321-6efaaa3af7ad72ce65d57517cc91ab48&channel=C20NJ65Q9&pretty=1",
+        "https://slack.com/api/conversations.history?token=xoxp-68763704759-68880662663-245706084850-3c78532638a327e0ab5088e75a27d6d8&channel=C20NJ65Q9&limit=1&pretty=1",
         function(data) {
-          alert("It worked");
+          that.setState({ message: data.messages[0].text });
         }
       );
-    return(
-      <div>todo</div>
-    );
+      return (
+        <p>{this.state.message || "Loading..."}</p>
+      );
   }
 }
 
