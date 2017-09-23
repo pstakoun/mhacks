@@ -4,12 +4,26 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 50px;
   padding: 20px;
   color: white;
 }
 
+.App-header h1 {
+  margin: 0;
+  line-height: 50px;
+}
+
 .card {
-  width: 50%;
-  padding: 2em;
+  width: 40%;
+  margin: 20px;
+  margin-bottom: 15px;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.card-wide {
+  width: 60%;
 }

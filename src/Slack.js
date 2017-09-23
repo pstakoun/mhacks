@@ -1,7 +1,8 @@
 /*eslint-env jquery*/
 import React, { Component } from 'react';
+
 class Slack extends Component {
-  render(){
+  render() {
     //choose user&generate keys
     //take most recent message
     //check if message has "to" in it
@@ -13,8 +14,10 @@ class Slack extends Component {
           alert("It worked");
         }
       );
-    return(
-      <div>todo</div>
+    return (
+      <div>
+        <h2>Slack</h2>
+      </div>
     );
   }
 }
