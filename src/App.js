@@ -49,7 +49,6 @@ class App extends Component {
 
     for (i = 0; i < this.state.gmailCards.length; i++) {
       card = this.state.gmailCards[i];
-      console.log(card);
       cards.push(<Card title={card.id} subtitle={null} desc={null} />);
     }
 

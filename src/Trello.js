@@ -28,8 +28,7 @@ class Trello extends Component {
                   var dateA = new Date(a.due), dateB = new Date(b.due);
                   return dateA-dateB;
                 });
-                console.log(due_cards);
-                alert(due_cards[0].due);
+                this.props.setTrelloCards(due_cards);
               }
             });
           }
