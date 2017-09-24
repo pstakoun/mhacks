@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-header {
@@ -15,13 +15,37 @@
 }
 
 .Card {
-  list-style: none;
+  list-style-type: none;
   display: inline-block;
 }
-
-.integrations>li {
-  list-style: none;
+cards{
+  white-space: nowrap;
   display: inline-block;
+}
+cards>ul{
+  display:inline-block;
+  white-space: nowrap;
+}
+cards>ul>li{
+  display: inline-block;
+  white-space: nowrap;
+}
+cards>ul>li>Card{
+  display: inline-block;
+  white-space: nowrap;
+}
+div{
+  width: 300000px;
+  height: auto;
+  overflow: hidden;
+}
+.integrations>li {
+  display: inline-block;
+  white-space: nowrap;
+}
+.integrations>ul{
+  white-space: nowrap;
+  display:inline-block;
 }
 
 .integrations>li>div {
