@@ -1,6 +1,7 @@
 /*global gapi*/
 import React, { Component } from 'react';
 import './App.css';
+import Slider from 'react-slick';
 import Card from './Card';
 import Google from './Google';
 import Trello from './Trello';
@@ -49,12 +50,19 @@ class App extends Component {
 
     for (i = 0; i < this.state.gmailCards.length; i++) {
       card = this.state.gmailCards[i];
-      cards.push(<Card title={card.id} subtitle={null} desc={null} />);
+      var subject = '';
+      for (var j = 0; j < card.payload.headers.length; j++) {
+        if (card.payload.headers[j].name == 'Subject') {
+          subject = card.payload.headers[j].value;
+          break;
+        }
+      }
+      cards.push(<Card title={subject} subtitle={null} desc={card.payload.snippet} />);
     }
 
     for (i = 0; i < this.state.trelloCards.length; i++) {
       card = this.state.trelloCards[i];
-      cards.push(<Card title={card.id} subtitle={null} desc={null} />);
+      cards.push(<Card title={card.name} subtitle={card.due} desc={card.desc} />);
     }
 
     /*for (card in this.state.slackCards) {
@@ -65,64 +73,34 @@ class App extends Component {
   }
 
   render() {
+		var settings = {
+      dots: false,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      variableWidth: true,
+      centerMode: true
+    };
     return (
-<div id="text-carousel" class="carousel slide" data-ride="carousel">
-<div className="App-header">
-  <h1>usher</h1>
-</div>
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="carousel-content">
-                        <div>
-                            <p>Sapiente, ducimus, voluptas, mollitia voluptatibus nemo explicabo sit blanditiis laborum dolore illum fuga veniam quae expedita libero accusamus quas harum ex numquam necessitatibus provident deleniti tenetur iusto officiis recusandae corporis culpa quaerat?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, sint fuga temporibus nam saepe delectus expedita vitae magnam necessitatibus dolores tempore consequatur dicta cumque repellendus eligendi ducimus placeat! </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <p>Sapiente, ducimus, voluptas, mollitia voluptatibus nemo explicabo sit blanditiis laborum dolore illum fuga veniam quae expedita libero accusamus quas harum ex numquam necessitatibus provident deleniti tenetur iusto officiis recusandae corporis culpa quaerat?</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+      <div className="App">
+        <div className="App-header">
+          <h1>usher</h1>
         </div>
-    </div>
-    <a class="left carousel-control" href="#text-carousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
- <a class="right carousel-control" href="#text-carousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-  <div className="App">
-    <ul className="cards">
-      {this.renderCards()}
-    </ul>
-    <br></br>
-    <ul className="integrations">
-      <li>
-        <Google setCalendarCards={this.setCalendarCards.bind(this)} setGmailCards={this.setGmailCards.bind(this)} addGmailCard={this.addGmailCard.bind(this)} />
-      </li>
-      <li>
-        <Trello setTrelloCards={this.setTrelloCards.bind(this)} />
-      </li>
-      <li>
-        <Slack setSlackCards={this.setSlackCards.bind(this)} />
-      </li>
-    </ul>
-  </div>
-</div>
-
+        <Slider {...settings}>
+          {this.renderCards()}
+        </Slider>
+        <ul className="integrations">
+          <li>
+            <Google setCalendarCards={this.setCalendarCards.bind(this)} setGmailCards={this.setGmailCards.bind(this)} addGmailCard={this.addGmailCard.bind(this)} />
+          </li>
+          <li>
+            <Trello setTrelloCards={this.setTrelloCards.bind(this)} />
+          </li>
+          <li>
+            <Slack setSlackCards={this.setSlackCards.bind(this)} />
+          </li>
+        </ul>
+      </div>
     );
   }
 }

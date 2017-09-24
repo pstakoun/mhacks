@@ -29,10 +29,10 @@ class Trello extends Component {
                 });
                 this.props.setTrelloCards(due_cards);
               }
-            });
+            }.bind(this));
           }
-        });
-      },
+        }.bind(this));
+      }.bind(this),
       error: function() {
         // Alert user
       }
