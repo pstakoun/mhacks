@@ -111,11 +111,15 @@ class Google extends Component {
         'userId': 'me',
         'labelIds': 'INBOX'
       }).then(function(response) {
-        gapi.client.gmail.users.messages.get({
-          'userId': 'me',
-          'id': messageId
-        })
-        this.props.setGmailCards(response.result.messages);
+        for (var i = 0; i < response.result.messages.length; i++) {
+          var messageId = response.result.messages[i].id;
+          gapi.client.gmail.users.messages.get({
+            'userId': 'me',
+            'id': messageId
+          }).then(function(response) {
+            this.props.addGmailCard(response.result.message);  
+          });
+        }
       }.bind(this));
     }
   }
