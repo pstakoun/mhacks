@@ -8,7 +8,6 @@ class Trello extends Component {
       success: function() {
         // Get member info
         window.Trello.get("members/me/boards", function(boards) {
-          console.log(boards);
           // Get boards
           var due_cards = [];
           var count = 0;

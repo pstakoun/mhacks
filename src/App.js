@@ -61,7 +61,6 @@ class App extends Component {
       cards.push(<Card title={null} subtitle={null} desc={null} />);
     }*/
 
-    console.log(this.state);
     return cards;
   }
 
