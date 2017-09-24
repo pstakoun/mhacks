@@ -84,7 +84,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1>usher</h1>
+          <h1>ushur</h1>
         </div>
         <Slider {...settings}>
           {this.renderCards()}
