@@ -68,6 +68,9 @@ class App extends Component {
   render() {
     return (
 <div id="text-carousel" class="carousel slide" data-ride="carousel">
+<div className="App-header">
+  <h1>MHacks</h1>
+</div>
     <div class="row">
         <div class="col-xs-offset-3 col-xs-6">
             <div class="carousel-inner">
@@ -103,9 +106,6 @@ class App extends Component {
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
   <div className="App">
-    <div className="App-header">
-      <h1>MHacks</h1>
-    </div>
     <ul className="cards">
       {this.renderCards()}
     </ul>
