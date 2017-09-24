@@ -14,18 +14,9 @@
   line-height: 50px;
 }
 
-.card {
-  width: 40%;
-  margin: 20px;
-  margin-bottom: 15px;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  display: inline;
-}
-
-.card-wide {
-  width: 60%;
+.Card {
+  list-style: none;
+  display: inline-block;
 }
 
 .integrations>li {
@@ -35,4 +26,5 @@
 
 .integrations>li>div {
   width: 200px;
+  height: 100px;
 }

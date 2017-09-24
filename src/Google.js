@@ -20,7 +20,7 @@ class Google extends Component {
     /**
      *  On load, called to load the auth2 library and API client library.
      */
-    gapi.load('client:auth2', initClient);
+    gapi.load('client:auth2', initClient.bind(this));
 
     /**
      *  Initializes the API client library and sets up sign-in state
@@ -31,15 +31,15 @@ class Google extends Component {
         discoveryDocs: DISCOVERY_DOCS,
         clientId: CLIENT_ID,
         scope: SCOPES
-      }).then(function () {
+      }).then(function() {
         // Listen for sign-in state changes.
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus.bind(this));
 
         // Handle the initial sign-in state.
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+        updateSigninStatus.bind(this)(gapi.auth2.getAuthInstance().isSignedIn.get());
         authorizeButton.onclick = handleAuthClick;
         signoutButton.onclick = handleSignoutClick;
-      });
+      }.bind(this));
     }
 
     /**
@@ -50,8 +50,8 @@ class Google extends Component {
       if (isSignedIn) {
         authorizeButton.style.display = 'none';
         signoutButton.style.display = 'block';
-        listUpcomingEvents();
-        listLabels();
+        listUpcomingEvents.bind(this)();
+        listLabels.bind(this)();
       } else {
         authorizeButton.style.display = 'block';
         signoutButton.style.display = 'none';
@@ -98,22 +98,8 @@ class Google extends Component {
         'maxResults': 10,
         'orderBy': 'startTime'
       }).then(function(response) {
-        var events = response.result.items;
-        appendPre('Upcoming events:');
-
-        if (events.length > 0) {
-          for (var i = 0; i < events.length; i++) {
-            var event = events[i];
-            var when = event.start.dateTime;
-            if (!when) {
-              when = event.start.date;
-            }
-            appendPre(event.summary + ' (' + when + ')')
-          }
-        } else {
-          appendPre('No upcoming events found.');
-        }
-      });
+        this.props.setCalendarCards(response.result.items);
+      }.bind(this));
     }
 
     /**
@@ -121,21 +107,16 @@ class Google extends Component {
      * are found an appropriate message is printed.
      */
     function listLabels() {
-      gapi.client.gmail.users.labels.list({
-        'userId': 'me'
+      gapi.client.gmail.users.messages.list({
+        'userId': 'me',
+        'labelIds': 'INBOX'
       }).then(function(response) {
-        var labels = response.result.labels;
-        appendPre('Labels:');
-
-        if (labels && labels.length > 0) {
-          for (var i = 0; i < labels.length; i++) {
-            var label = labels[i];
-            appendPre(label.name)
-          }
-        } else {
-          appendPre('No Labels found.');
-        }
-      });
+        gapi.client.gmail.users.messages.get({
+          'userId': 'me',
+          'id': messageId
+        })
+        this.props.setGmailCards(response.result.messages);
+      }.bind(this));
     }
   }
 
