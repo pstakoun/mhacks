@@ -74,6 +74,7 @@ class App extends Component {
         <ul className="cards">
           {this.renderCards()}
         </ul>
+        <br></br>
         <ul className="integrations">
           <li>
             <Google setCalendarCards={this.setCalendarCards.bind(this)} setGmailCards={this.setGmailCards.bind(this)} addGmailCard={this.addGmailCard.bind(this)} />
