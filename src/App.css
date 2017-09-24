@@ -35,7 +35,7 @@ cards>ul>li>Card{
   white-space: nowrap;
 }
 div{
-  width: 300000px;
+  width: 100000px;
   height: auto;
   overflow: hidden;
 }
@@ -51,4 +51,19 @@ div{
 .integrations>li>div {
   width: 200px;
   height: 100px;
+}
+.body {
+  background-color: #333333;
+}
+
+.carousel-content {
+    color:black;
+    display:flex;
+    align-items:center;
+}
+
+#text-carousel {
+  width: 100%;
+  height: auto;
+  padding: 50px;
 }
