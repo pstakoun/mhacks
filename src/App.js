@@ -69,7 +69,7 @@ class App extends Component {
     return (
 <div id="text-carousel" class="carousel slide" data-ride="carousel">
 <div className="App-header">
-  <h1>MHacks</h1>
+  <h1>usher</h1>
 </div>
     <div class="row">
         <div class="col-xs-offset-3 col-xs-6">

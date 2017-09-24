@@ -45,7 +45,7 @@ class Trello extends Component {
     return (
       <div>
         <h2>Trello</h2>
-        <button onClick={this.auth.bind(this)}>Click me</button>
+        <button onClick={this.auth.bind(this)}>Authorize</button>
       </div>
     );
   }
