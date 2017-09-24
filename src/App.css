@@ -21,9 +21,18 @@
   padding: 20px;
   border: 1px solid black;
   border-radius: 5px;
-  display: inline-block;
+  display: inline;
 }
 
 .card-wide {
   width: 60%;
+}
+
+.integrations>li {
+  list-style: none;
+  display: inline-block;
+}
+
+.integrations>li>div {
+  width: 200px;
 }
