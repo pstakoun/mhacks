@@ -9,9 +9,9 @@ app.get('/auth/slack', (req, res) =>{
 var options = {
 	uri: 'https://mhacksx.herokuapp.com/auth/slack?code='
 			+req.query.code+
-			'&client_id='+"68763704759.245695352610"+
-			'&client_secret='+"42202ad1b69296ae37695378e7d7993b"+
-			'&redirect_uri='+"https://mhacksx.herokuapp.com",
+			'&client_id='+'68763704759.245695352610'+
+			'&client_secret='+'42202ad1b69296ae37695378e7d7993b'+
+			'&redirect_uri='+ 'https://mhacksx.herokuapp.com',
 	method: 'GET'
 }
 request(options, (error, response, body) => {
