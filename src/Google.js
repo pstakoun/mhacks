@@ -118,7 +118,7 @@ class Google extends Component {
             'id': messageId
           }).then(function(response) {
             var payload = response.result.payload.headers;
-            this.props.addGmailCard();
+            this.props.addGmailCard(response.result);
           }.bind(this));
         }
       }.bind(this));
