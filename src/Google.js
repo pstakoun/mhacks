@@ -117,8 +117,9 @@ class Google extends Component {
             'userId': 'me',
             'id': messageId
           }).then(function(response) {
-            this.props.addGmailCard(response.result.message);  
-          });
+            var payload = response.result.payload.headers;
+            this.props.addGmailCard();
+          }.bind(this));
         }
       }.bind(this));
     }

@@ -52,14 +52,16 @@ class App extends Component {
       cards.push(<Card title={card.id} subtitle={null} desc={null} />);
     }
 
-    for (card in this.state.trelloCards) {
-      cards.push(<Card title={null} subtitle={null} desc={null} />);
+    for (i = 0; i < this.state.trelloCards.length; i++) {
+      card = this.state.trelloCards[i];
+      cards.push(<Card title={card.id} subtitle={null} desc={null} />);
     }
 
-    for (card in this.state.slackCards) {
+    /*for (card in this.state.slackCards) {
       cards.push(<Card title={null} subtitle={null} desc={null} />);
-    }
+    }*/
 
+    console.log(this.state);
     return cards;
   }
 
