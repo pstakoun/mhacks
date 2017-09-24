@@ -9,19 +9,20 @@ class App extends Component {
   renderCards() {
     var cards = [];
     var cards_mail = [];
-    for (var card in cards_mail) {
+    var card;
+    for (card in cards_mail) {
       cards.push(<Card title="" subtitle="" desc="" />);
     }
     var cards_trello = [];
-    for (var card in cards_trello) {
+    for (card in cards_trello) {
       cards.push(<Card title="" subtitle="" desc="" />);
     }
     var cards_calendar = [];
-    for (var card in cards_calendar) {
+    for (card in cards_calendar) {
       cards.push(<Card title="" subtitle="" desc="" />);
     }
     var cards_slack = [];
-    for (var card in cards_slack) {
+    for (card in cards_slack) {
       cards.push(<Card title="" subtitle="" desc="" />);
     }
     return cards;
